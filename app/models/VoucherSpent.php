@@ -45,6 +45,15 @@ class VoucherSpent extends ModelBase
      */
     public $created_at;
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->belongsTo("voucher_id", "Voucher", "id");
+        $this->belongsTo("branch_id", "Branch", "id");
+        $this->belongsTo("cashier_id", "Cashier", "id");
+        $this->belongsTo("customer_id", "Customer", "id");
+        $this->belongsTo("customer_package_id", "CustomerPackage", "id");
+    }
     /**
      * Returns table name mapped in the model.
      *

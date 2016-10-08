@@ -120,7 +120,7 @@ class adminForm extends \Phalcon\Forms\Form
 		foreach($fields as $field)
 		{
 			if( is_array($field)) $field=(object)$field;
-			$resultArr[$field->$id]=$field->returnData($name,null);
+			$resultArr[$field->$id]= method_exists($field,'returnData' ) ? $field->returnData($name,null) : $field->$name ;
 		}
 		$field = new Select($fname,$resultArr,array('id'=>$fname.'_drop', 'class'=>"select2"));
 		$field->setLabel(_($label));

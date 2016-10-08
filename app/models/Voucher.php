@@ -75,6 +75,13 @@ class Voucher extends ModelBase
      */
     public $quantity;
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->belongsTo("brand_id", "Brand", "id");
+        $this->belongsTo("package_id", "Package", "id");
+    }
+
     /**
      * Returns table name mapped in the model.
      *

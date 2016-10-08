@@ -36,7 +36,7 @@ class BrandController extends AdminBaseController{
         );
         $form[] =  ['field' => 'DefaultImage', 'key' => '','type' => 'nestedForm',
             'formFields'=>$imageForm,'prefix'=>'DefaultImage','value'=>'getFirstImage(default)'];
-        $form[] =   ['field' => 'brand_type_id', 'key' => 'Brand Type', 'type' => 'select','selectData' => array(\BrandType::find(['order'=>'brand_id']), 'id', 'type')];
+        $form[] =   ['field' => 'brand_type_id', 'key' => 'Brand Type', 'type' => 'select','selectData' => array(\BrandType::find(), 'id', 'type')];
 
 
         $list = $modelName::getAttributes(array("description",'brand_type_id'));
