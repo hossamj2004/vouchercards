@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule ^(publicvars)($|/) - [L]
+  RewriteRule ^(client)($|/) - [L]
+  RewriteRule ^(driver)($|/) - [L]
+  RewriteRule  ^$ public/    [L]
+	RewriteRule  (.*) public/$1 [L]
+</IfModule>
