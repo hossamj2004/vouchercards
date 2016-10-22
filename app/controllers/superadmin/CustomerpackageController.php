@@ -31,8 +31,8 @@ class CustomerpackageController extends AdminBaseController{
         $modelName=$this->modelName;
         $form = $modelName::getAttributes(array("id","package_id",'customer_id','created_at'));
         $form= array_merge($form,array(
-            ['field' => 'package_id', 'key' => 'Package id', 'type' => 'select','selectData' => array(\Package::find(), 'id', 'name')],
-            ['field' => 'customer_id', 'key' => 'Customer id', 'type' => 'select','selectData' => array(\Package::find(), 'id', 'name')],
+            ['field' => 'package_id', 'key' => 'Package', 'type' => 'select','selectData' => array(\Package::find(), 'id', 'name')],
+            ['field' => 'customer_id', 'key' => 'Customer', 'type' => 'select','selectData' => array(\Package::find(), 'id', 'name')],
         ));
 
         $list = $modelName::getAttributes(array("package_id",'customer_id'));
