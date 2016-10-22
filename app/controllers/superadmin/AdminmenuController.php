@@ -11,7 +11,7 @@
 namespace app\controllers\superadmin;
 use app\controllers\front\frontforms\FrontForm;
 
-class AdminMenuController extends AdminBaseController{
+class AdminmenuController extends AdminBaseController{
     public $modelName ='AdminMenu';
     public $modelPrimaryKey = 'id';
     public $orderEnabled = true ;
