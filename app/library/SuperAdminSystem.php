@@ -79,7 +79,7 @@ class SuperAdminSystem
         $url=\Phalcon\Di::getDefault()->getShared('url');
         $url = $full ? $url->getBaseUri()  : '';
         if(  $this->userType == 'admin')
-            return $url.'superadmin/dashboard';
+            return $url.'superadmin/Dashboard';
         elseif(  substr($this->userType,0,6) == 'admin_'  )
             return $url.'superadmin/Dashboard';
         else
