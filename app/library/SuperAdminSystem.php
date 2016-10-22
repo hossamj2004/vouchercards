@@ -81,7 +81,7 @@ class SuperAdminSystem
         if(  $this->userType == 'admin')
             return $url.'superadmin/dashboard';
         elseif(  substr($this->userType,0,6) == 'admin_'  )
-            return $url.'superadmin/dashboard';
+            return $url.'superadmin/Dashboard';
         else
             return $url.'superadmin/Authentication/login';
     }
