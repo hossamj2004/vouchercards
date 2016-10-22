@@ -15,11 +15,6 @@ class Branch  extends ModelBase
      */
     public $brand_id;
 
-    /**
-     *
-     * @var integer
-     */
-    public $location_tag_id;
 
     /**
      *

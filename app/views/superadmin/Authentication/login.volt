@@ -15,7 +15,7 @@
                         <form role="form"  method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    {{ this.forms.get('LoginForm').render("email",['class':'validate[required,custom[email]] form-control text-input input_txt']) }}
+                                    {{ this.forms.get('LoginForm').render("email",['class':'validate[required,custom[email]] form-control text-input input_txt','placholder':'user name']) }}
                                 </div>
                                 <div class="form-group">
                                     {{ this.forms.get('LoginForm').render("password",['class':'validate[required,minSize[3]]  form-control text-input input_txt']) }}

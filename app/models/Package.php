@@ -75,6 +75,15 @@ class Package extends ModelBase
     {
         parent::initialize();
         $this->hasMany("id", "CustomerPackage", "package_id");
+         $this->hasManyToMany(
+            "id",
+            "PackageBrand",
+            "package_id",
+            "brand_id",
+            "Brand",
+            "id",
+            array('alias' => 'PackageBrand')
+        );
     }
     /**
      * Allows to query a set of records that match the specified conditions
@@ -128,4 +137,18 @@ class Package extends ModelBase
 
         return $params;
     }
+
+
+public function saveFromArray($data){
+      if( !parent::saveFromArray($data) ) return false;
+       //save client truck type
+        if(isset( $data['package_brand']['PackageBrand'] )){
+            if( !$this->insertRelatedManyToManyData( $data['package_brand']['PackageBrand'] ,
+                'PackageBrand' ) ){
+                return false;
+            }
+        }
+       return true;
+}
+
 }

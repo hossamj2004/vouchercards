@@ -43,7 +43,7 @@ class VoucherSpent extends ModelBase
      *
      * @var string
      */
-    public $created_at;
+    public $created_at='000-00-00 00:00:00';
 
     public function initialize()
     {

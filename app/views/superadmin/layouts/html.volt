@@ -76,6 +76,11 @@
            				  Admin
            				</p>
 					</a>
+					<a class="navbar-brand logo_new" href="{{ url('superadmin/Authentication/logout') }}">
+						<p class="pull-right">
+           				  logout
+           				</p>
+					</a>
 				</div>
 				<!-- /.navbar-header -->
 

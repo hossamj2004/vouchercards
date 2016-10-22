@@ -157,7 +157,7 @@
     if(  $_GET('url') == 'server')
         var baseUrl='http://'+window.location.hostname+':8080/vouchercards/';
     if(  $_GET('url') == 'develop')
-        var baseUrl='http://na2la.com/develop/vouchercards/';
+        var baseUrl='http://'+window.location.hostname+'/vouchercards/develop/';
 
     if(  $_GET('url') == 'live')
         var baseUrl='http://vouchercards.org/';

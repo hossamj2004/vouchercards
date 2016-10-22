@@ -1246,8 +1246,14 @@ class ModelBase  extends \Phalcon\Mvc\Model{
         //work with transaction
         $transaction= $this->getTransaction();
 
+try{
         if( ! $this->saveFromArray($data))
             return false;
+}catch(\Exception $e) {
+
+      $this->setValidationMessage($e->getMessage());
+return false;
+}
 
         if( !$transaction->commit() )
             return false;

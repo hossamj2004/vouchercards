@@ -41,7 +41,8 @@ class PackageController extends AdminBaseController{
 
         $form[] =  ['field' => 'expire_date', 'key' => 'Expire date','type' => 'dateTime'];
 
-
+  $form[] =array('field' => 'package_brand[PackageBrand]', 'key' => 'PackageBrand', 'type' => 'manyToMany',
+                'selectData' => array(\Brand::find(), 'id', 'name'),'value'=>'PackageBrand');
 
         $this->fieldsInCreateForm=$form;
         $this->fieldsInEditForm=$form;

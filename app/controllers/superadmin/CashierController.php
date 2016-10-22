@@ -31,7 +31,7 @@ class CashierController extends AdminBaseController{
         $modelName=$this->modelName;
 
         $form= $modelName::getAttributes(array("id","created_at","updated_at","branch_id"));
-        $form[] =   ['field' => 'brand_type_id', 'key' => 'Branch', 'type' => 'select','selectData' => array(\Branch::find(['order'=>'brand_id']), 'id', 'getBrandBranchName')];
+        $form[] =   ['field' => 'branch_id', 'key' => 'Branch', 'type' => 'select','selectData' => array(\Branch::find(['order'=>'brand_id']), 'id', 'getBrandBranchName')];
 
         $list = $modelName::getAttributes(array("branch_id",'password'));
         $list= array_merge($list,array(

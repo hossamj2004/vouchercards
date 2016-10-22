@@ -49,13 +49,13 @@ class Voucher extends ModelBase
      *
      * @var string
      */
-    public $created_at;
+    public $created_at='000-00-00 00:00:00';
 
     /**
      *
      * @var string
      */
-    public $updated_at;
+    public $updated_at='000-00-00 00:00:00';
 
     /**
      *
