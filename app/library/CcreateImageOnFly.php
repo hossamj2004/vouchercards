@@ -1,4 +1,5 @@
 <?php
+namespace app\library;
 class CreateImageOnFly {
 
 
