@@ -1,18 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Astm
- * Date: 14/07/16
- *
- * This controller handle Admin menu
- *
- */
 
 namespace app\controllers\superadmin;
 
 
-class CustomerController extends AdminBaseController{
-    public $modelName ='Customer';
+class PostController extends AdminBaseController{
+    public $modelName ='Post';
     public $modelPrimaryKey = 'id';
     public $orderEnabled = true ;
     public $extraButtons=[
@@ -28,40 +20,25 @@ class CustomerController extends AdminBaseController{
     public function beforeExecuteRoute($dispatcher){
         parent::beforeExecuteRoute($dispatcher);
         $this->simpleInit();
-
-        // Define the forms disabled fields
+          // Define the forms disabled fields
         $modelName=$this->modelName;
-        $imageForm=array(
-            ['field' => 'image', 'key' => 'Image', 'type' => 'file' ,'value'=> 'getImageUrl']
-        );
-        $form = $modelName::getAttributes(array("id","created_at","last_login","city_id",'birthdate','password'));
-        $form= array_merge($form,array(
-            [ 'field' => 'birthdate', 'key' => 'Birthdate' ,'type'=>'date'],
-            [ 'field' => 'password', 'key' => 'Password' ,'type'=>'password'],
-             ['field' => 'DefaultImage', 'key' => '','type' => 'nestedForm',
-            'formFields'=>$imageForm,'prefix'=>'DefaultImage','value'=>'getFirstImage(default)'],
+        $form = $modelName::getAttributes(array("id","created_at"));
+        $form = array_merge($form,array(
+            [ 'field' => 'content', 'key' => 'content' ,'type'=>'textArea'],
         ));
-
         // Define the view disabled fieldsBirthdate
         $view=[
-         
         ];
         $view = array_merge($view, $modelName::getAttributes(array("city_id","password")) );
-
         $search= array_merge( [['field' => 'id', 'key' => 'ID']],
             $form
         );
-
-
-
         // initialize the pages
         $this->fieldsInCreateForm = $form;
         $this->fieldsInEditForm = $form;
         $this->fieldsInSearch = $search;
         $this->fieldsInList = $view;
-        $view[] =  ['field' => 'getImageHTML(default)', 'key' => 'Image'];
         $this->fieldsInView = $view;
-        
-        
-    }
+	}
 }
+?>

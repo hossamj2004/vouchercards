@@ -160,7 +160,21 @@ class Customer extends UserBase
         $this->assign($data);
         if (!$this->save())
             return false;
-
+            
+  		//upload image
+        $Image= \app\controllers\superadmin\superforms\adminForm::getPrefixArray( $data, 'DefaultImage');
+        if( count ($Image ) >0 &&
+            isset( $Image ['image'] ) &&
+            file_exists($Image ['image'] ['tmp_name']) &&
+            is_uploaded_file($Image ['image'] ['tmp_name'])
+        ){
+            $Image['factor_id'] = $this->id;
+            $Image['type']=get_class($this);
+            $Image['reference_keys']='default';
+            if(  !$this->insertRelatedDataFromArray($Image,
+                'Image') )
+                return false ;
+        }
         return true;
     }
 

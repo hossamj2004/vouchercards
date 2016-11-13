@@ -38,7 +38,7 @@ class ClientApiSystem  extends ApiSystem {
             $this->client->getSpecialDataArray(
                 array_merge(\Client::getAttributes(['password'],true),
                     [
-                        ['field' => 'getFirstImageUrl(profile_image)', 'key' => 'profile_image'],
+                        ['field' => 'getFirstImageUrl(default)', 'key' => 'profile_image'],
                         //other data to be added on request
                     ]
                 )

@@ -1,5 +1,6 @@
 <?php
 use app\library\UploadImage;
+use app\library\CreateImageOnFly;
 class Image extends ModelBase
 {
 
@@ -151,7 +152,7 @@ class Image extends ModelBase
      */
     public function getImageUrl()
     {
-        return \CreateImageOnFly::CreateImage('public/'.$this->image,$this->reference_keys,$this->type);
+        return CreateImageOnFly::CreateImage('public/'.$this->image,$this->reference_keys,$this->type);
     }
 
     /**

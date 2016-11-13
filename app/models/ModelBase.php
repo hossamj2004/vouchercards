@@ -967,8 +967,10 @@ class ModelBase  extends \Phalcon\Mvc\Model{
      * for admin forms for getting images as html structure
      */
     public function getImageHTML( $reference_key=false ){
+    
         $images = $this->getImages($reference_key);
         $image_html='<ul class="images-ul">';
+        //var_dump($images);
         foreach($images as $image_details){
             $image_html.= $image_details ? '
                 <li><img src="'. $image_details->getImageUrl() .'"></li>'

@@ -31,6 +31,7 @@ class BrandController extends apiBaseController {
         $this->generalFilter=[
             'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id')),
             'brand_id'=>$this->request->get('brand_id'),
+            'name'=>$this->request->get('name'),
         ];
     }
 }

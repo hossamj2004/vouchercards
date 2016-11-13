@@ -92,6 +92,7 @@ class ApiSystem  {
             $this->client->getSpecialDataArray(
                 array_merge(\Customer::getAttributes(['password'],true),
                     [
+						['field' => 'getFirstImageUrl(default)', 'key' => 'image'],
 
                         //other data to be added on request
                     ]

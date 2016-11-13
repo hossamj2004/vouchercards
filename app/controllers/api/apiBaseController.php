@@ -221,4 +221,57 @@ class apiBaseController extends Controller{
         $this->fieldsInList = $modelName::getAttributes([],true );
         $this->fieldsInDetails = $modelName::getAttributes([],true );
     }
+    
+        public function getArray($allowed,$inputArray=null ){
+        if(!isset($inputArray)) $inputArray = array_merge_recursive ( $this->request->get() , AdminBaseController::GetPostedFiles() )  ;
+        $filter = new \Phalcon\Filter();
+        $result = [];
+
+        //if first key = * allow all results
+        if( isset( $allowed[0]) && $allowed[0]['key']=='*'  ){
+            $firstAllow = $allowed[0];
+            $allowed=[];
+            foreach( $inputArray as $key=> $item  ){
+                $allowed[$key]= $firstAllow;
+                $allowed[$key]['key']=$key;
+            }
+        }
+
+        //no loop on allowed items and get them fron input
+        foreach($allowed as $allowedItem){
+            $key = $allowedItem['key'];
+            //check if exist else return default value or just ignore field if no default value is fount
+            if(!isset( $inputArray[$key] )  ||  $inputArray[$key] == ''  ){
+                if(isset($allowedItem['validation'])  && is_array($allowedItem['validation'] )&& in_array('required', $allowedItem['validation'] ) )
+                {
+                    $this->error=$key .' is required';
+                    return false ;
+                }
+                if( isset( $allowedItem['defaultValue']  ))
+                    $result[$key] = $allowedItem['defaultValue'];
+                continue;
+            }
+
+            //in case input type is an array we handle it here
+            if(isset($allowedItem['array']) && is_array($allowedItem['array']) ){
+                if( count( $inputArray[$key] ) == 0 ){
+                    continue;
+                }
+                $result[$key] =self::getArray( $allowedItem['array'] ,$inputArray[$key]  );
+                continue ;
+            }
+
+            // now we set the result item
+            $resultItem =$inputArray[$key];
+
+            //sanitize the result if filter is found
+            if( isset( $allowedItem['filter'] ) ){
+                $resultItem= $filter->sanitize($resultItem, $allowedItem['filter']);
+            }
+
+            $result[$key] = $resultItem;
+        }
+        return $result;
+    }
+
 }

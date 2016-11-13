@@ -2,7 +2,7 @@
 namespace app\library;
 class CreateImageOnFly {
 
-
+ 
   static function CreateImage($file,$reference_keys,$model) {
     chdir(dirname(__FILE__));
 

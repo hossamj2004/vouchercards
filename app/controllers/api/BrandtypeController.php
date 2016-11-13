@@ -31,7 +31,7 @@ class BrandtypeController extends apiBaseController {
         $this->generalFilter=[
             'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id')),
         ];
-        $this->fieldsInList[]=['field' => 'getFirstImageUrl(profile)',
+        $this->fieldsInList[]=['field' => 'getFirstImageUrl(default)',
             'key' => 'image'];
 
     }

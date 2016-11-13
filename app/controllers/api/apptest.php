@@ -100,6 +100,30 @@
                 <option data-url="api/voucherspent/save" data-description=""  data-data="customer_package_id=11&voucher_id=1&branch_id=1&cashier_id=1&cashier_password=123456" value="login">
                     voucherspent/save
                 </option>
+                 <option>
+                    ------------------------------------------------------------------
+                </option>
+                <option data-url="api/profile/edit" data-description=""  data-data="first_name=Wallace&last_name=Mckee=1&mobile=012345678445&mobile_alternative=012457478444&birthdate=1988-10-22&password=123456&image=" value="login">
+                    profile/edit
+                </option>
+                <option>
+                    ------------------------------------------------------------------
+                </option>
+                <option data-url="api/notification/list" data-description=""  data-data="is_read" value="login">
+                    notification/list
+                </option>
+                <option data-url="api/notification/details" data-description=""  data-data="id=1" value="login">
+                    notification/details
+                </option>
+                <option>
+                    ------------------------------------------------------------------
+                </option>
+                <option data-url="api/post/list" data-description=""  data-data="" value="login">
+                    post/list
+                </option>
+                <option data-url="api/post/details" data-description=""  data-data="id=1" value="login">
+                    post/details
+                </option>
             </select>
         </li>
         <li class="km-button" id="showCurrentSystem"  ><span class="km-text">

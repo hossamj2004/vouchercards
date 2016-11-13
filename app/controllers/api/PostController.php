@@ -12,12 +12,12 @@ use Phalcon\Mvc\Controller;
 /**
  * Class ApiBogoController
  */
-class PackageController extends apiBaseController {
-    public $modelName ='Package';
+class PostController extends apiBaseController {
+    public $modelName ='Post';
     public $modelPrimaryKey = 'id';
     public $activeApis=[
         'list'=>true,
-        'details'=>false,
+        'details'=>true,
         'save' =>false,
         'delete' =>false,
     ];
@@ -28,11 +28,10 @@ class PackageController extends apiBaseController {
     public function beforeExecuteRoute($dispatcher){
         parent::beforeExecuteRoute($dispatcher);
         $this->simpleInit();
+        $modelName=$this->modelName;
+        $this->fieldsInList = $modelName::getAttributes(['content'],true);
         $this->generalFilter=[
-            'customer_id'=>$this->apiSystem->client->id ,
-            'expire_at_less_than'=>date("Y-m-d H:i:s")
+
         ];
-        $this->fieldsInList[]=['field' => 'getFirstImageUrl(default)',
-            'key' => 'image'];
     }
 }

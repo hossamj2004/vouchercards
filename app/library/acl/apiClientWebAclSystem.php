@@ -25,6 +25,9 @@ class apiClientWebAclSystem extends  aclSystem {
             ['visitor','authentication','*'],
             ['visitor','password','*'],
 
+			['client','post','*'],
+			['client','notification','*'],
+ 			['client','profile','*'],
             ['client','package','*'],
             ['client','brandtype','*'],
             ['client','brand','*'],
