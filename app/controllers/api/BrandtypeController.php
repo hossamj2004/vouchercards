@@ -29,7 +29,7 @@ class BrandtypeController extends apiBaseController {
         parent::beforeExecuteRoute($dispatcher);
         $this->simpleInit();
         $this->generalFilter=[
-            'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id')),
+            'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id',null,0)),
         ];
         $this->fieldsInList[]=['field' => 'getFirstImageUrl(default)',
             'key' => 'image'];

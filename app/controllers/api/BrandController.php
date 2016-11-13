@@ -29,7 +29,7 @@ class BrandController extends apiBaseController {
         parent::beforeExecuteRoute($dispatcher);
         $this->simpleInit();
         $this->generalFilter=[
-            'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id')),
+            'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id',null,0)),
             'brand_id'=>$this->request->get('brand_id'),
             'name'=>$this->request->get('name'),
         ];
