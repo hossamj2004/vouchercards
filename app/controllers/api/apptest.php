@@ -85,19 +85,19 @@
                 <option data-url="api/brandtype/list" data-description="Slide 10 : brand types "  data-data="customer_package_id=5" value="login">
                     brandtype/list
                 </option>
-                <option data-url="api/brand/list" data-description="Slide 11 : brands list"  data-data="customer_package_id=11&brand_type_id=1" value="login">
+                <option data-url="api/brand/list" data-description="Slide 11 : brands list"  data-data="customer_package_id=5&brand_type_id=5" value="login">
                     brand/list
                 </option>
-                <option data-url="api/branch/list" data-description="Slide 13 : branches list"  data-data="customer_package_id=11&brand_id=5" value="login">
+                <option data-url="api/branch/list" data-description="Slide 13 : branches list"  data-data="customer_package_id=5&brand_id=5" value="login">
                     branch/list
                 </option>
-                <option data-url="api/voucher/list" data-description="Slide 15 : vouchers list"  data-data="customer_package_id=11&brand_id=5&branch_id=1" value="login">
+                <option data-url="api/voucher/list" data-description="Slide 15 : vouchers list"  data-data="customer_package_id=5&brand_id=5&branch_id=5" value="login">
                     voucher/list
                 </option>
                 <option>
                     ------------------------------------------------------------------
                 </option>
-                <option data-url="api/voucherspent/save" data-description="Slide 17 : voucher spent where cashier put his code"  data-data="customer_package_id=11&voucher_id=1&branch_id=1&cashier_id=1&cashier_password=123456" value="login">
+                <option data-url="api/voucherspent/save" data-description="Slide 17 : voucher spent where cashier put his code"  data-data="customer_package_id=5&voucher_id=5&branch_id=5&cashier_password=123456" value="login">
                     voucherspent/save
                 </option>
                  <option>
