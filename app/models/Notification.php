@@ -36,7 +36,13 @@ class Notification extends ModelBase
      * @var integer
      */
     public $customer_id;
-
+    
+    /**
+     *
+     * @var integer
+     */
+    public $type;
+    
     /**
      *
      * @var integer
@@ -85,6 +91,7 @@ class Notification extends ModelBase
                     'customer_id',
                     //filter by is read
                     'is_read',
+                    'type'
 
                 ], 'Notification');
         $params['conditions'] .= $condition ? (' and '. $condition) : '';

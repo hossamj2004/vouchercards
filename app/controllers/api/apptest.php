@@ -115,7 +115,7 @@
                 <option>
                     ------------------------------------------------------------------
                 </option>
-                <option data-url="api/notification/list" data-description="Slide 7 : notifications list"  data-data="is_read=1" value="login">
+                <option data-url="api/notification/list" data-description="Slide 7 : notifications list"  data-data="is_read=0&type=1" value="login">
                     notification/list
                 </option>
                 <option data-url="api/notification/details" data-description=""  data-data="id=1" value="login">

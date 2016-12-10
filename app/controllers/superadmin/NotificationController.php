@@ -27,7 +27,7 @@ class NotificationController extends AdminBaseController{
 
         parent::beforeExecuteRoute($dispatcher);
         $modelName=$this->modelName;
-        $list= $modelName::getAttributes(['id','is_read','message','client_id']);
+        $list= $modelName::getAttributes(['id','is_read','message','client_id','type']);
         $list[]=['field' => 'Customer->getFullName', 'key' => 'Client'];
         $view= $modelName::getAttributes(['id','is_read','client_id']);
         $view[]=['field' => 'Customer->getFullName', 'key' => 'Client'];
@@ -37,6 +37,8 @@ class NotificationController extends AdminBaseController{
         $form[] =  ['field' => 'subject', 'key' => 'Subject', 'type' => 'text'];
         //$form[] =  ['field' => 'image', 'key' => 'image', 'type' => 'image'];
         $form[] =  ['field' => 'message', 'key' => 'Message', 'type' => 'textArea'];
+        $form[] =  ['field' => 'type', 'key' => 'Type',  'type' => 'ajaxSelect','selectData' => [$this->url->getBaseUri() .'superadmin/Notification/getTypes','id','name']];
+
         $this->fieldsInCreateForm = $form;
         $this->fieldsInEditForm = $form;
         $this->fieldsInList = $list;
@@ -207,7 +209,19 @@ class NotificationController extends AdminBaseController{
     }
 
 
+    /**
+     * get drivers as json to use in ajaxselect
+     * */
+    public function getTypesAction(){
 
+
+        header('Content-Type: application/json');
+
+        $default=[['name'=>'type 1','id'=>'1'],
+                  ['name'=>'type 2','id'=>'2']];
+
+        return $this->response->setJsonContent($default);
+    }
 
 
 }
