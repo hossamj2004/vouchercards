@@ -36,5 +36,32 @@ class VoucherspentController extends apiBaseController {
             'voucher_id'=>$this->request->get('voucher_id'),
             'customer_package_id'=>$this->request->get('customer_package_id'),
         ];
+        
+    }
+     public function saveAction(){
+        if( !$this->activeApis['save'] ){
+            $this->error ='Access denied';
+            return $this->setJson();
+        }
+        $modelName = $this->modelName;
+        if( count( array_merge($this->generalFilter,$this->saveFilter) ) == 0 )
+            $resultObj = new $modelName();
+        else
+            $resultObj = $modelName::findFirst(array_merge($this->generalFilter,$this->saveFilter));
+
+        if( !$resultObj ){
+            $this->error='invalid filters';
+        }
+        
+        $arrayToSave= count(  $this->allowedSaveParams )== 0 ? $this->dataToSave :  array_intersect_key($this->dataToSave,array_flip($this->allowedSaveParams));
+
+		$arrayToSave['customer_package_id'] = $this->apiSystem->client->getPackageID($this->request->get('customer_package_id',null,0));
+
+        if( !$resultObj->saveAndCommitFromArray( $arrayToSave ))
+        {
+            $this->error=$resultObj->getValidationMessageText();
+        }
+        $this->data['id']= $resultObj->id;
+        return $this->setJson();
     }
 }

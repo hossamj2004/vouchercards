@@ -73,8 +73,14 @@
 
         <li class="km-button" >
             <select id="changeApi" >
-                <option data-url="api/authentication/login" data-description="Slide 2 : login page  (email=[email]&password=[password])" data-data="password=123456&email=sinegit@gmail.com" value="login">
+                <option data-url="api/authentication/login" data-description="Slide 2 : login page  (membership_id=[membership_id]&password=[password])" data-data="password=123456&membership_id=5" value="login">
                     authentication/login
+                </option>
+                <option data-url="api/authentication/forgotPassword" data-description="" data-data="email=sinegit@gmail.com" value="login">
+                    authentication/forgotPassword
+                </option>
+                 <option data-url="api/authentication/terms" data-description="" data-data="" value="login">
+                    authentication/terms
                 </option>
                 <option>
                     ------------------------------------------------------------------
@@ -85,31 +91,31 @@
                 <option data-url="api/brandtype/list" data-description="Slide 10 : brand types "  data-data="customer_package_id=5" value="login">
                     brandtype/list
                 </option>
-                <option data-url="api/brand/list" data-description="Slide 11 : brands list"  data-data="customer_package_id=5&brand_type_id=5" value="login">
+                <option data-url="api/brand/list" data-description="Slide 11 : brands list"  data-data="brand_type_id=5&name_like=" value="login">
                     brand/list
                 </option>
-                <option data-url="api/branch/list" data-description="Slide 13 : branches list"  data-data="customer_package_id=5&brand_id=5" value="login">
+                <option data-url="api/branch/list" data-description="Slide 13 : branches list"  data-data="brand_id=5" value="login">
                     branch/list
                 </option>
-                <option data-url="api/voucher/list" data-description="Slide 15 : vouchers list"  data-data="customer_package_id=5&brand_id=5&branch_id=5" value="login">
+                <option data-url="api/voucher/list" data-description="Slide 15 : vouchers list"  data-data="brand_id=5&branch_id=5" value="login">
                     voucher/list
                 </option>
                 <option>
                     ------------------------------------------------------------------
                 </option>
-                <option data-url="api/voucherspent/save" data-description="Slide 17 : voucher spent where cashier put his code"  data-data="customer_package_id=5&voucher_id=5&branch_id=5&cashier_password=123456" value="login">
+                <option data-url="api/voucherspent/save" data-description="Slide 17 : voucher spent where cashier put his code"  data-data="voucher_id=5&branch_id=5&cashier_password=123456" value="login">
                     voucherspent/save
                 </option>
                  <option>
                     ------------------------------------------------------------------
                 </option>
-                <option data-url="api/profile/edit" data-description="Slide 4,5 : edit profile api ( can edit 1 item per request )"  data-data="first_name=Wallace&last_name=Mckee=1&mobile=012345678445&mobile_alternative=012457478444&birthdate=1988-10-22&password=123456&image=" value="login">
+                <option data-url="api/profile/edit" data-description="Slide 4,5 : edit profile api ( can edit 1 item per request )"  data-data="first_name=Wallace&last_name=Mckee=1&mobile=012345678445&mobile_alternative=012457478444&birthdate=1988-10-22&password=123456&job=Accountant&image=" value="login">
                     profile/edit
                 </option>
                 <option>
                     ------------------------------------------------------------------
                 </option>
-                <option data-url="api/notification/list" data-description="Slide 7 : notifications list"  data-data="is_read" value="login">
+                <option data-url="api/notification/list" data-description="Slide 7 : notifications list"  data-data="is_read=1" value="login">
                     notification/list
                 </option>
                 <option data-url="api/notification/details" data-description=""  data-data="id=1" value="login">
@@ -142,7 +148,7 @@
         </li>
         <li>
             <label class="km-required km-label-above">DATA
-                <input value="password=123456&email=sinegit@gmail.com" id="testApiURLData" name="email" type="text" />
+                <input value="password=123456&membership_id=5" id="testApiURLData" name="email" type="text" />
             </label>
         </li>
         <li>

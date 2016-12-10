@@ -28,7 +28,9 @@ class VoucherController extends AdminBaseController{
     public function beforeExecuteRoute($dispatcher){
         parent::beforeExecuteRoute($dispatcher);
         $this->simpleInit();
-
+		$imageForm=array(
+            ['field' => 'image', 'key' => 'Image', 'type' => 'file' ,'value'=> 'getImageUrl']
+        );
         $modelName=$this->modelName;
         $list = $modelName::getAttributes(array('description','back_description','package_id','brand_id'));
         $list[]=   ['field' => 'Package->name', 'key' => 'Package'];
@@ -36,8 +38,10 @@ class VoucherController extends AdminBaseController{
 
         $form=$modelName::getAttributes(array('id','created_at','updated_at','expire_date'));
         $form[] =   ['field' => 'package_id', 'key' => 'Package', 'type' => 'select','selectData' => array(\Package::find(), 'id', 'name')];
-        $form[] =   ['field' => 'brand_id', 'key' => 'Package', 'type' => 'select','selectData' => array(\Brand::find(), 'id', 'name')];
-
+        $form[] =   ['field' => 'brand_id', 'key' => 'Brand', 'type' => 'select','selectData' => array(\Brand::find(), 'id', 'name')];
+ 		$form[] =   ['field' => 'DefaultImage', 'key' => '','type' => 'nestedForm',
+            'formFields'=>$imageForm,'prefix'=>'DefaultImage','value'=>'getFirstImage(default)'];
+   
 
         $this->fieldsInCreateForm=$form;
         $this->fieldsInEditForm=$form;
@@ -46,6 +50,7 @@ class VoucherController extends AdminBaseController{
         $view=$this->fieldsInView;
         $view[] =  ['field' => 'description', 'key' => 'description'];
         $view[] =  ['field' => 'back_description', 'key' => 'back_description'];
+        $view[] =  ['field' => 'getImageHTML(default)', 'key' => 'Image'];
         $this->fieldsInView=$view;
         $this->fieldsInList=$list;
 

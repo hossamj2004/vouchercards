@@ -93,7 +93,7 @@ class ApiSystem  {
                 array_merge(\Customer::getAttributes(['password'],true),
                     [
 						['field' => 'getFirstImageUrl(default)', 'key' => 'image'],
-
+						['field' => 'membership_id', 'key' => 'membership_id'],
                         //other data to be added on request
                     ]
                 )

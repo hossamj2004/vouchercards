@@ -87,4 +87,7 @@ class BrandType extends ModelBase
 
         return $params;
     }
+     public function countBrands(){
+		return \Brand::countBybrand_type_id($this->id);
+	}
 }

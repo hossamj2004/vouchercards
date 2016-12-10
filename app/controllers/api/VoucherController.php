@@ -34,5 +34,8 @@ class VoucherController extends apiBaseController {
         ];
         $this->fieldsInList[]=['key'=>'quantity_spent','field'=>'getQuantitySpent(customer_package_id)',
             'params'=>['customer_package_id'=>$this->request->get('customer_package_id') ]];
+        $this->fieldsInList[]=['key'=>'expire_date','field'=>'getExpireDate'];
+        $this->fieldsInList[]=['field' => 'getFirstImageUrl(default)',
+            'key' => 'image'];
     }
 }

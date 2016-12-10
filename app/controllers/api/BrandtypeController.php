@@ -33,6 +33,8 @@ class BrandtypeController extends apiBaseController {
         ];
         $this->fieldsInList[]=['field' => 'getFirstImageUrl(default)',
             'key' => 'image'];
+        $this->fieldsInList[]=['field' => 'countBrands',
+            'key' => 'countBrands'];
 
     }
 }

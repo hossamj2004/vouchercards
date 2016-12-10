@@ -116,4 +116,7 @@ class Voucher extends ModelBase
     public function getQuantitySpent($customer_package_id){
         return VoucherSpent::count('voucher_id = "'.$this->id.'" and  customer_package_id ="'.$customer_package_id.'" ' );
     }
+    public function getExpireDate(){
+		return $this->Package->expire_date;
+	}
 }

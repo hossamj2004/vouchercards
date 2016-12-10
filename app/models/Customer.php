@@ -58,7 +58,13 @@ class Customer extends UserBase
      * @var string
      */
     public $birthdate;
-
+    
+    /**
+     *
+     * @var string
+     */
+    public $job;
+    
     /**
      *
      * @var string
@@ -135,6 +141,9 @@ class Customer extends UserBase
     }
 
 
+public function membership_id(){
+	return $this->id;
+}
     /**
      * @param $data
      * @return bool
@@ -180,7 +189,13 @@ class Customer extends UserBase
 
 
     public function getPackageID($customer_package_id){
-        if(! ( $customerPackage = \CustomerPackage::findFirst( 'id = '.$customer_package_id.' and customer_id = "'. $this->id .'" ' ) )){
+    	if(!isset($customer_package_id) ||$customer_package_id==0 )
+    	{
+    		if(! ( $customerPackage = \CustomerPackage::findFirst( ' customer_id = "'. $this->id .'" ' ) )){
+            	return false ;
+        	}
+        }
+        elseif(! ( $customerPackage = \CustomerPackage::findFirst( 'id = '.$customer_package_id.' and customer_id = "'. $this->id .'" ' ) )){
             return false ;
         }
         return $customerPackage->package_id;

@@ -153,8 +153,15 @@ class Brand extends ModelBase
             if( isset($filters['customer_id'])  )
                 $params['joinCondition'] .=" and CustomerPackage.customer_id ='".$filters['customer_id']."' ";
         }
-
+ 		if(isset($filters['name_like']) ) {
+			$params['conditions'] .=" and Brand.name LIKE '%".$filters['name_like']."%' ";
+		}
 
         return $params;
     }
+    
+    public function countVouchers(){
+		return \Voucher::countBybrand_id($this->id);
+
+	}
 }

@@ -22,14 +22,21 @@ class PostController extends AdminBaseController{
         $this->simpleInit();
           // Define the forms disabled fields
         $modelName=$this->modelName;
+        $imageForm=array(
+            ['field' => 'image', 'key' => 'Image', 'type' => 'file' ,'value'=> 'getImageUrl']
+        );
         $form = $modelName::getAttributes(array("id","created_at"));
         $form = array_merge($form,array(
             [ 'field' => 'content', 'key' => 'content' ,'type'=>'textArea'],
         ));
+        $form[] =   ['field' => 'DefaultImage', 'key' => '','type' => 'nestedForm',
+            'formFields'=>$imageForm,'prefix'=>'DefaultImage','value'=>'getFirstImage(default)'];
+
         // Define the view disabled fieldsBirthdate
         $view=[
         ];
         $view = array_merge($view, $modelName::getAttributes(array("city_id","password")) );
+        $view[] =  ['field' => 'getImageHTML(default)', 'key' => 'Image'];
         $search= array_merge( [['field' => 'id', 'key' => 'ID']],
             $form
         );

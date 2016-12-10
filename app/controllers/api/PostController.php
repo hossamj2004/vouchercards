@@ -33,5 +33,9 @@ class PostController extends apiBaseController {
         $this->generalFilter=[
 
         ];
+        $this->fieldsInList[]=['field' => 'getFirstImageUrl(default)',
+            'key' => 'image'];
+        $this->fieldsInDetails[]=['field' => 'getFirstImageUrl(default)',
+            'key' => 'image'];
     }
 }

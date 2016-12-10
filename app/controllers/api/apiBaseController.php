@@ -203,11 +203,13 @@ class apiBaseController extends Controller{
         if( !$resultObj ){
             $this->error='invalid filters';
         }
+        
         $arrayToSave= count(  $this->allowedSaveParams )== 0 ? $this->dataToSave :  array_intersect_key($this->dataToSave,array_flip($this->allowedSaveParams));
         if( !$resultObj->saveAndCommitFromArray( $arrayToSave ))
         {
             $this->error=$resultObj->getValidationMessageText();
         }
+        $this->data['id']= $resultObj->id;
         return $this->setJson();
     }
 

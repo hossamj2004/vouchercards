@@ -30,6 +30,7 @@ class ProfileController extends apiBaseController {
 		    ['key'=>'email'  ],
 		    ['key'=>'birthdate'  ],
 		    ['key'=>'mobile'  ],
+		    ['key'=>'job'  ],
             ['key'=>'alternative_mobile'  ],
             ['key'=>'DefaultImage' , 'array'=>[
                 ['key'=>'image' ],
