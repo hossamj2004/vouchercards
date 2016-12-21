@@ -37,7 +37,9 @@ class BrandController extends AdminBaseController{
         $form[] =  ['field' => 'DefaultImage', 'key' => '','type' => 'nestedForm',
             'formFields'=>$imageForm,'prefix'=>'DefaultImage','value'=>'getFirstImage(default)'];
         $form[] =   ['field' => 'brand_type_id', 'key' => 'Brand Type', 'type' => 'select','selectData' => array(\BrandType::find(), 'id', 'type')];
-
+        $form[] =  ['field' => 'longitude', 'key' => '','type' => 'hidden'];
+        $form[] =  ['field' => 'latitude', 'key' => '','type' => 'hidden'];
+        $form[] =  ['field' => 'location_select', 'key' => 'Location','type' => 'map'];
 
         $list = $modelName::getAttributes(array("description",'brand_type_id'));
         $list= array_merge($list,array(
