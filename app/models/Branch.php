@@ -61,6 +61,15 @@ class Branch  extends ModelBase
     {
         parent::initialize();
         $this->belongsTo("brand_id", "Brand", "id");
+        $this->hasManyToMany(
+            "id",
+            "VoucherBranch",
+            "branch_id",
+            "voucher_id",
+            "Voucher",
+            "id",
+            array('alias' => 'VoucherBranch')
+        );
     }
 
     public function getBrandBranchName(){
@@ -98,5 +107,15 @@ class Branch  extends ModelBase
     {
         return parent::findFirst($parameters);
     }
-
+	public function saveFromArray($data){
+      if( !parent::saveFromArray($data) ) return false;
+       //save client truck type
+        if(isset( $data['voucher_branch']['VoucherBranch'] )){
+            if( !$this->insertRelatedManyToManyData( $data['voucher_branch']['VoucherBranch'] ,
+                'VoucherBranch' ) ){
+                return false;
+            }
+        }
+       return true;
+	}
 }

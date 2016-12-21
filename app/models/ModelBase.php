@@ -1105,6 +1105,7 @@ class ModelBase  extends \Phalcon\Mvc\Model{
      * it also delete the old before inserting new data
      */
     public function insertRelatedManyToManyData($data,$alias){
+    	
         $modelManager = \Phalcon\Di::getDefault()->getShared('modelsManager');
         $relation = $modelManager->getRelationByAlias (get_class( $this ),$alias);
         $this->deleteRelatedManyToManyData($alias);
@@ -1161,6 +1162,7 @@ class ModelBase  extends \Phalcon\Mvc\Model{
     }
     public function rollback(){
         try{
+        	if( is_object($this->currentTransaction))
             $this->currentTransaction->rollback();
         }catch (\Exception $e) {
         }

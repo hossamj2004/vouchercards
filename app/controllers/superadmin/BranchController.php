@@ -34,6 +34,10 @@ class BranchController extends AdminBaseController{
         $form[] =  ['field' => 'brand_id', 'key' => 'Brand id','type' => 'select', 'type' => 'select','selectData' => array(\Brand::find(), 'id', 'name')];
         $form[] =  ['field' => 'longitude', 'key' => '','type' => 'hidden'];
         $form[] =  ['field' => 'latitude', 'key' => '','type' => 'hidden'];
+        $form[] =  ['field' => 'vouchers' ,'key' => 'Vouchers','type' => 'select', 'type' => 'select','selectData' => array(\Voucher::find(), 'id', 'name')] ;
+  		//make voucher selectable depending on selected brand id using JS
+  		//$form[] =array('field' => 'voucher_branch[VoucherBranch]', 'key' => 'VoucherBranch', 'type' => 'manyToMany',
+        //        'selectData' => array(\Voucher::find(), 'id', 'name'),'value'=>'VoucherBranch');
         $form[] =  ['field' => 'location_select', 'key' => 'Location','type' => 'map'];
 
 
