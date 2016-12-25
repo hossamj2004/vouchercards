@@ -1109,6 +1109,10 @@ class ModelBase  extends \Phalcon\Mvc\Model{
         $modelManager = \Phalcon\Di::getDefault()->getShared('modelsManager');
         $relation = $modelManager->getRelationByAlias (get_class( $this ),$alias);
         $this->deleteRelatedManyToManyData($alias);
+        //remove zeros
+        foreach($data as $array_key=>$array_item)
+            if($data[$array_key] == 0)
+                unset($data[$array_key]);
         if(  $this->insertSimpleManyToMany(
             $relation->getIntermediateModel(),//related many to many model Ex (AdminAcl)
             $relation->getIntermediateReferencedFields(),//refer to the related object id (acl_id)

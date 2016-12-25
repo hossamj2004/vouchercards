@@ -32,5 +32,6 @@ class BranchController extends apiBaseController {
             'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id',null,0)),
             'brand_id'=>$this->request->get('brand_id'),
         ];
+        $this->fieldsInList[]=['key'=>'countVouchers','field'=>'VoucherBranch->count'];
     }
 }

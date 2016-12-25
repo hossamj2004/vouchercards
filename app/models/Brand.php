@@ -85,6 +85,7 @@ class Brand extends ModelBase
     {
         parent::initialize();
         $this->belongsTo("brand_type_id", "BrandType", "id");
+        $this->hasMany("id", "Branch", "brand_id");
     }
 
     /**

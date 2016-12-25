@@ -31,6 +31,7 @@ class VoucherController extends apiBaseController {
         $this->generalFilter=[
             'package_id'=>$this->apiSystem->client->getPackageID($this->request->get('customer_package_id',null,0)),
             'brand_id'=>$this->request->get('brand_id'),
+            'branch_id'=>$this->request->get('branch_id'),
         ];
         $this->fieldsInList[]=['key'=>'quantity_spent','field'=>'getQuantitySpent(customer_package_id)',
             'params'=>['customer_package_id'=>$this->request->get('customer_package_id') ]];

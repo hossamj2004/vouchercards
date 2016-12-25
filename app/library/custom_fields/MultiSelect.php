@@ -11,7 +11,7 @@ namespace Phalcon\Forms\Element {
 
     class MultiSelect extends  \Phalcon\Forms\Element\Select {
         public function render($attributes=null){
-           return @parent::render($attributes);
+           return @parent::render($attributes).'<input type="hidden" name="'. $this->getName() .'" value = "0" >';
         }
     }
 }
