@@ -50,6 +50,24 @@ class ProfileController extends apiBaseController {
         return $this->setJson();
 		
 	}
-    
+        public function changePasswordAction(){
+		  // Get the request params
+		$data =$this->getArray( [
+		    ['key'=>'password'  ],
+		    ]);
+        if($this->apiSystem->client->saveAndCommitFromArray($data)){
+			$this->data['client']=$this->apiSystem->client->getSpecialDataArray(
+                array_merge(\Customer::getAttributes(['password'],true),
+                    [
+						['field' => 'getFirstImageUrl(default)', 'key' => 'image'],
+                    ]
+                )
+            );
+        } else {
+          $this->error=$this->apiSystem->client->getValidationMessageText();
+        }
+        return $this->setJson();
+		
+	}
     
 }

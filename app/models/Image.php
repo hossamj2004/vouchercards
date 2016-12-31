@@ -177,8 +177,7 @@ class Image extends ModelBase
         $url=\Phalcon\Di::getDefault()->getShared('url');
         $url=$url->getBaseUri();
         // model folder paths
-        $model_path="../../"."public/default_images/".$class.'/'. $reference_keys . 'default.jpg';
-
+        $model_path="../../"."public/img/default_images/".$class.'/'. $reference_keys . '/default.jpg';
         if( !file_exists($model_path) )
             return $url.'public/img/default_images/'.'default.jpg';
 

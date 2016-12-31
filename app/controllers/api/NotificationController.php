@@ -51,4 +51,8 @@ class NotificationController extends apiBaseController {
         $this->data['item']= $resultObj->getSpecialDataArray($this->fieldsInDetails);
         return $this->setJson();
     }
+    public function countAction(){
+        $this->data['count_not_read']= \Notification::count('customer_id = '.$this->apiSystem->client->id .' and  is_read = 0 ' ) ;
+        return $this->setJson();
+    }
 }

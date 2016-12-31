@@ -12,6 +12,13 @@ class PostController extends AdminBaseController{
         'edit'=>true,
         'delete' =>true,
         'view' =>true,
+        'gallery' => [
+            'text' => 'Gallery',
+            'action' => 'gallery',
+            'appearOnCondition' => '',
+            'confirmation' => false,
+            'class' => ' btn btn-info btn-outline ',
+        ] ,
     ];
     /**
      * @param $dispatcher
@@ -46,6 +53,9 @@ class PostController extends AdminBaseController{
         $this->fieldsInSearch = $search;
         $this->fieldsInList = $view;
         $this->fieldsInView = $view;
+	}
+	public function galleryAction($id){
+	    return $this->response->redirect($this->folderName.'/Image?reference_keys=gallery&factor_id='.$id);
 	}
 }
 ?>

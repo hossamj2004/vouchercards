@@ -28,11 +28,12 @@ class BrandtypeController extends AdminBaseController{
     public function beforeExecuteRoute($dispatcher){
         parent::beforeExecuteRoute($dispatcher);
         $this->simpleInit();
-
-        $form=$this->fieldsInCreateForm;
+        $modelName=$this->modelName;
+        $form= $modelName::getAttributes([$this->modelPrimaryKey,'new_until']);
         $imageForm=array(
             ['field' => 'image', 'key' => 'Image', 'type' => 'file' ,'value'=> 'getImageUrl']
         );
+        $form[] =  ['field' => 'new_until', 'key' => 'New until','type' => 'dateTime'];   
         $form[] =  ['field' => 'DefaultImage', 'key' => '','type' => 'nestedForm',
             'formFields'=>$imageForm,'prefix'=>'DefaultImage','value'=>'getFirstImage(default)'];
         $this->fieldsInCreateForm=$form;

@@ -16,7 +16,7 @@ class VoucherspentController extends apiBaseController {
     public $modelName ='VoucherSpent';
     public $modelPrimaryKey = 'id';
     public $activeApis=[
-        'list'=>false,
+        'list'=>true,
         'details'=>false,
         'save' =>true,
         'delete' =>false,
@@ -36,8 +36,40 @@ class VoucherspentController extends apiBaseController {
             'voucher_id'=>$this->request->get('voucher_id'),
             'customer_package_id'=>$this->request->get('customer_package_id'),
         ];
+        $this->generalFilter=[
+            'customer_id'=>$this->apiSystem->client->id,
+            'group'=>'voucher_id',
+        ];
+        $this->fieldsInList=[];
+        $this->fieldsInList[]=['key'=>'used_count','field'=>'getUsedCount'];
+        $this->fieldsInList[]=['field' => 'Voucher->getSpecialDataArray(data)',
+                'key' => 'voucher','params'=>[
+                    'data'=>[
+                        ['field' => 'name',
+                            'key' => 'name'],
+                        ['field' => 'Brand->getSpecialDataArray(data)',
+			                'key' => 'brand','params'=>[
+			                    'data'=>[
+			                    	['field' => 'id',
+			                            'key' => 'id'],
+			                        ['field' => 'name',
+			                            'key' => 'name'],
+			                        ['field' => 'getFirstImageUrl(default)',
+			            				'key' => 'image'],
+			                    ]
+			                ]
+			            ]  
+                            
+                    ]
+                ]
+            ];
+     
+            
         
     }
+    
+  
+    
      public function saveAction(){
         if( !$this->activeApis['save'] ){
             $this->error ='Access denied';

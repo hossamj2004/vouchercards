@@ -29,7 +29,8 @@ class PostController extends apiBaseController {
         parent::beforeExecuteRoute($dispatcher);
         $this->simpleInit();
         $modelName=$this->modelName;
-        $this->fieldsInList = $modelName::getAttributes(['content'],true);
+        $this->fieldsInList = $modelName::getAttributes([],true);
+        
         $this->generalFilter=[
 
         ];
@@ -37,5 +38,7 @@ class PostController extends apiBaseController {
             'key' => 'image'];
         $this->fieldsInDetails[]=['field' => 'getFirstImageUrl(default)',
             'key' => 'image'];
+        $this->fieldsInDetails[]=['field' => 'getImagesArray(gallery)',
+            'key' => 'gallery'];
     }
 }

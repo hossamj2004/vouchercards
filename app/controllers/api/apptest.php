@@ -112,6 +112,9 @@
                 <option data-url="api/profile/edit" data-description="Slide 4,5 : edit profile api ( can edit 1 item per request )"  data-data="first_name=Wallace&last_name=Mckee=1&mobile=012345678445&mobile_alternative=012457478444&birthdate=1988-10-22&password=123456&job=Accountant&image=" value="login">
                     profile/edit
                 </option>
+                <option data-url="api/profile/changePassword" data-description="Change current user password"  data-data="password=123456" value="login">
+                    profile/changePassword
+                </option>
                 <option>
                     ------------------------------------------------------------------
                 </option>
@@ -121,13 +124,16 @@
                 <option data-url="api/notification/details" data-description=""  data-data="id=1" value="login">
                     notification/details
                 </option>
+                <option data-url="api/notification/count" data-description="count not read notifications"  data-data="" value="login">
+                    notification/count
+                </option>
                 <option>
                     ------------------------------------------------------------------
                 </option>
                 <option data-url="api/post/list" data-description=""  data-data="" value="login">
                     post/list
                 </option>
-                <option data-url="api/post/details" data-description="Slide 9 : post details"  data-data="id=1" value="login">
+                <option data-url="api/post/details" data-description="Slide 9 : post details"  data-data="id=123" value="login">
                     post/details
                 </option>
             </select>

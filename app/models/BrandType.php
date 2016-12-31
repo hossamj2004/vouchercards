@@ -14,7 +14,13 @@ class BrandType extends ModelBase
      * @var string
      */
     public $type;
-
+    
+   /**
+     *
+     * @var string
+     */
+    public $new_until;
+    
     /**
      * Returns table name mapped in the model.
      *
@@ -88,6 +94,20 @@ class BrandType extends ModelBase
         return $params;
     }
      public function countBrands(){
-		return \Brand::countBybrand_type_id($this->id);
+		return \Brand::countBybrand_type_id($this->id); 
+	}
+	
+	public function countVouchers(){
+		$brands =\Brand::findBybrand_type_id($this->id);
+		if(!$brands) return 0;
+		$countVouchers = 0;
+		foreach($brands as $brand ){
+			$countVouchers+= $brand->countVouchers();
+		}
+		return $countVouchers.'';
+	}
+	
+	public function isNew(){
+		return $this->new_until ? ( $this->new_until > date("Y-m-d H:i:s") ) : false ;
 	}
 }
