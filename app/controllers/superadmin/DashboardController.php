@@ -32,8 +32,8 @@ class DashboardController extends SuperAdminBaseController{
     public function uploadDefaultImageAction(){
 
         $fields = [ ];
-        $fields[] =  ['field' => 'model', 'key' => 'model', 'type' => 'text'];
-        $fields[] =  ['field' => 'class', 'key' => 'class', 'type' => 'text'];
+        $fields[] =  ['field' => 'model', 'key' => '', 'type' => 'hidden'];
+        $fields[] =  ['field' => 'class', 'key' => '', 'type' => 'hidden'];
         $fields[] =  ['field' => 'file', 'key' => 'file', 'type' => 'file'];
 
         //here i will run save array

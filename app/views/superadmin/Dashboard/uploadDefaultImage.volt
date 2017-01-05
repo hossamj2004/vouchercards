@@ -23,16 +23,18 @@
 					{{ partial('includes/disable_auto_fill') }}
 					<div >
 						{{ content() }}
+						
+					
 					</div>
 					{% for element in this.forms.get('Form') %}
-					<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6  container-{{ superAdminSystem.getClass(element) }} ">
+					<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6  container- ">
 						{% if element.getLabel() %}
 						<label for="{{ element.getAttribute ('id') }}" class="control-label">
 							{{ element.getLabel() }}
 						</label>
 						{% endif %}
-						{{ this.forms.get('Form').render(element.getName(),['class':' form-control text-input input_txt ' ~  superAdminSystem.getValidationClass(element) ]) }}
-					</div>
+						{{ this.forms.get('Form').render(element.getName(),['class':' form-control text-input input_txt '  ]) }}
+					</div><br style="clear: both;">
 					{% endfor %}
 					<input name="csrf" type="hidden" value="{{ security.getToken() }}" >
 				</form>
