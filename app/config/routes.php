@@ -66,4 +66,22 @@ $router->add('/api/:controller', array(
     'controller' => 1
 ));
 
+/**
+ *  The below routes belong to the API
+ */
+$router->add('/front', array(
+    'namespace' => 'app\controllers\front',
+    'controller' => 'index'
+));
+$router->add('/fronts/:controller/:action/:params', array(
+    'namespace' => 'app\controllers\front',
+    'controller' => 1,
+    'action' => 2,
+    'params' => 3,
+));
+$router->add('/front/:controller', array(
+    'namespace' => 'app\controllers\front',
+    'controller' => 1
+));
+
 return $router;
