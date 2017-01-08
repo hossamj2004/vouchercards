@@ -48,11 +48,10 @@ class AuthenticationController extends apiBaseController {
     public function forgotPasswordAction(){
 
         $forgetPassword=new \app\library\forgetPassword();
-		//todo 
-        /*if ( !$forgetPassword->resetPasswordMessage( $this->request->get('email')))
+        if ( !$forgetPassword->resetPasswordMessage( $this->request->get('email')))
         {
             $this->error =$forgetPassword->getValidationMessageText();
-        }*/
+        }
 
         return $this->setJson();
     }

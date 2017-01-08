@@ -33,7 +33,7 @@ class forgetPassword {
                      <tr>
                          <td style="padding:0 1em; text-align:center;">
                              <p style="text-align:left; margin:0; font-size:1em; line-height:1.5em;color: #999; -webkit-font-smoothing: antialiased;">
-                                 A request to reset your Naqla account password has been made. Click the following button to reset your password
+                                 A request to reset your account password has been made. Click the following button to reset your password
                              </p>
 
                              <a style="background-color: #48b5df; color:#FFFFFF; display:inline-block; text-decoration:none; padding:10px 30px; margin:15px; border-radius:5px;" href="'.$link.'">
@@ -55,7 +55,7 @@ class forgetPassword {
                  </table>
             ';
 
-            if( $this->sendUserMessage('Naala password reset',$message) )
+            if( $this->sendUserMessage('Password reset',$message) )
                 return true;
             else{
                 $this->validationMessage = "Error sending Email";
@@ -108,7 +108,7 @@ class forgetPassword {
      */
     public function setCurrentAccountByMail($email){
         if( $email)
-            $client = \Client::findFirst(array(
+            $client = \Customer::findFirst(array(
                 'conditions'=>'LOWER(email) = LOWER(:email:) ',
                 'bind' => array('email'=>$email)
             ));
@@ -145,13 +145,7 @@ class forgetPassword {
      * read text of the message and send it as email to $this->client
      */
     public function sendUserMessage($title,$message){
-
-        $notification = new \Notification();
-        $template=   $notification->getTemplateHtml('layout',
-            ['subject'=>$title,
-                'content'=>$message]);
-
-        return \Email::sendEmail($template,$title,$this->client->email);
+        return \Email::sendEmail($message,$title,$this->client->email);
     }
     public $key ='$%$2jjsdppkjy';
     public function encode($message,$page=''){
@@ -161,7 +155,7 @@ class forgetPassword {
         $token = array(
             "message" => $message,
             "page" => $page,
-            "iss" => "http://rewardskit.com",
+            "iss" => "http://egyptjudgesclub.com",
             "iat" => @time(),
             "nbf" =>  @time(),
             "exp" =>  $expTime,
@@ -180,7 +174,7 @@ class forgetPassword {
             return false;
         }
 
-        if($decoded && $decoded->iss=="http://rewardskit.com" && $page == $decoded->page  )
+        if($decoded && $decoded->iss=="http://egyptjudgesclub.com" && $page == $decoded->page  )
             return $decoded->message;
 
         $this->validationMessage = 'Invalid token';
