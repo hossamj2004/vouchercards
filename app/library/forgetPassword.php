@@ -20,7 +20,7 @@ class forgetPassword {
         if($client = $this->setCurrentAccountByMail($email)){
             $config= \Phalcon\Di::getDefault()->getShared('configuration') ;
             $code = $this->encode($this->client->email,'resetPassword');
-            $link = 'http://' . $_SERVER['SERVER_NAME'] . $config->application->baseUri . '/client/#/setPassword/'.$code;
+            $link = 'http://' . $_SERVER['SERVER_NAME'] . $config->application->baseUri . '/front/profile/setPassword?token='.$code;
 
             //todo move to file
             $message='
@@ -89,6 +89,7 @@ class forgetPassword {
             return false;
         }
         $client->password= $security->hash(($newPassword) );
+       
         if($client){
             if( $client->save()){
                 return true;

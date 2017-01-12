@@ -73,7 +73,7 @@ $router->add('/front', array(
     'namespace' => 'app\controllers\front',
     'controller' => 'index'
 ));
-$router->add('/fronts/:controller/:action/:params', array(
+$router->add('/front/:controller/:action/:params', array(
     'namespace' => 'app\controllers\front',
     'controller' => 1,
     'action' => 2,

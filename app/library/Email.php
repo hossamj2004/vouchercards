@@ -16,7 +16,7 @@ class Email {
      * send mails
      */
     static function sendEmail($html,$subject,$toEmail,
-                                      $fromEmail = '',$fromName = 'Naqla.org'
+                                      $fromEmail = '',$fromName = 'egyptjudgesclub.com'
                                       ,$headers = array('Reply-To' => 'no reply')){
         //using mail function  todo change in future
         $configuration= \Phalcon\Di::getDefault()->getShared('configuration');
